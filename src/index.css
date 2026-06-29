@@ -64,4 +64,12 @@
   .badge {
     @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border;
   }
+  /* Wrapper de página: padding responsive uniforme para todas las vistas */
+  .page {
+    @apply p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 max-w-7xl mx-auto w-full;
+  }
+  /* Para tablas anchas que deben hacer scroll horizontal en móvil */
+  .table-scroll {
+    @apply -mx-4 sm:mx-0 overflow-x-auto;
+  }
 }
