@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-700 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-primary-600; }
+
+  .section-title {
+    @apply text-sm font-medium text-slate-300 border-b border-slate-800 pb-2;
+  }
+
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl;
+  }
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 active:scale-95 text-white 
+           px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 
+           flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 
+           border border-slate-700 px-4 py-2 rounded-lg text-sm font-medium 
+           transition-all duration-150 flex items-center gap-2;
+  }
+  .btn-danger {
+    @apply bg-red-600/10 hover:bg-red-600/20 active:scale-95 text-red-400 
+           border border-red-600/20 px-3 py-1.5 rounded-lg text-xs font-medium 
+           transition-all duration-150 flex items-center gap-1.5;
+  }
+  .btn-warning {
+    @apply bg-amber-600/10 hover:bg-amber-600/20 active:scale-95 text-amber-400 
+           border border-amber-600/20 px-3 py-1.5 rounded-lg text-xs font-medium 
+           transition-all duration-150 flex items-center gap-1.5;
+  }
+  .btn-success {
+    @apply bg-emerald-600/10 hover:bg-emerald-600/20 active:scale-95 text-emerald-400 
+           border border-emerald-600/20 px-3 py-1.5 rounded-lg text-xs font-medium 
+           transition-all duration-150 flex items-center gap-1.5;
+  }
+  .input {
+    @apply bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm 
+           text-slate-100 placeholder-slate-500 outline-none w-full
+           focus:border-primary-500 focus:ring-1 focus:ring-primary-500/30 
+           transition-colors duration-150;
+  }
+  .label {
+    @apply block text-xs font-medium text-slate-400 mb-1.5;  }
+  .select {
+    @apply input appearance-none pr-8 bg-no-repeat bg-right cursor-pointer;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium border;
+  }
+}
