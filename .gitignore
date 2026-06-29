@@ -1,0 +1,28 @@
+# Dependencias
+node_modules
+.pnp
+.pnp.js
+
+# Archivos de entorno y secretos (¡Crucial!)
+.env
+.env.local
+.env.*.local
+
+# Build y archivos generados
+dist
+dist-ssr
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos del sistema
+.DS_Store
+*.pem
+
+# IDEs
+.vscode/
+.idea/

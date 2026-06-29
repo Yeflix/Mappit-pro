@@ -4,14 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getMessaging } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC8yX9vw0uUVoM6TOs_POrraxI1zn7Eb6s",
-  authDomain: "mappit-app1.firebaseapp.com",
-  projectId: "mappit-app1",
-  // ✅ CORREGIDO: formato correcto del storageBucket para Web SDK
-  storageBucket: "mappit-app1.appspot.com",
-  messagingSenderId: "83270541621",
-  appId: "1:83270541621:web:2f8efdeb90913c84a7fe5c",
-  measurementId: "G-BPWZFMFCWD"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
