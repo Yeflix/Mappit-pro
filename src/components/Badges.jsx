@@ -1,5 +1,6 @@
 // src/components/Badges.jsx
 import { estadoOperativo, verificacion, estadoReporte, tipoAlerta, nivelUrgencia, severidad, MODERACIONES } from '../constants/rescate'
+import { estadoPersona, nivelImpacto } from '../constants/personas'
 
 export function EstadoPuntoBadge({ estado }) {
   const e = estadoOperativo(estado)
@@ -40,4 +41,14 @@ export function VerificadoRecursoBadge({ verificado }) {
   return verificado
     ? <span className="badge bg-emerald-500/10 text-emerald-400 border-emerald-500/30">✅ Verificado</span>
     : <span className="badge bg-slate-700/40 text-slate-400 border-slate-600">— Sin verificar</span>
+}
+
+export function PersonaBadge({ estado }) {
+  const e = estadoPersona(estado)
+  return <span className={`badge ${e.cls}`}>{e.emoji} {e.etiqueta}</span>
+}
+
+export function NivelImpactoBadge({ nivel }) {
+  const n = nivelImpacto(nivel)
+  return <span className={`badge ${n.cls}`}>{n.emoji} {n.etiqueta}</span>
 }

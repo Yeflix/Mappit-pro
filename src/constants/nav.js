@@ -1,6 +1,6 @@
 import {
   LayoutDashboard, MapPin, Inbox, AlertTriangle, Megaphone,
-  Activity, BarChart2, Globe, Send,
+  Activity, BarChart2, Globe, Send, Users, PieChart,
 } from 'lucide-react'
 
 // Estructura de navegación del panel.
@@ -13,6 +13,8 @@ export const NAV = [
   { to: '/alertas',     icon: Megaphone,       label: 'Alertas oficiales' },
   { to: '/zonas',       icon: Activity,        label: 'Zonas de impacto' },
   { to: '/contadores',  icon: BarChart2,       label: 'Contadores por zona' },
+  { to: '/personas',    icon: Users,           label: 'Personas' },
+  { to: '/metricas',    icon: PieChart,        label: 'Métricas por estado' },
   { section: 'VenezuelaConecta' },
   { to: '/recursos',    icon: Globe,           label: 'Recursos' },
   { to: '/sugerencias', icon: Send,            label: 'Sugerencias',       badge: 'sugerencias' },

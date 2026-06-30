@@ -4,11 +4,12 @@ import {
   subscribePuntos, subscribeReportes, subscribeAlertas,
   subscribeContadores, subscribeSolicitudesPendientes,
   subscribeRecursos, subscribeSugerenciasPendientes,
+  subscribeContadoresPersonas,
 } from '../services/firestoreService'
 import { tipoPunto, tipoReporte, estadoReporte } from '../constants/rescate'
 import {
   MapPin, AlertTriangle, Megaphone, BarChart2, Inbox,
-  CheckCircle, ChevronRight, Activity, Globe, Send,
+  CheckCircle, ChevronRight, Activity, Globe, Send, Users,
 } from 'lucide-react'
 
 export default function DashboardPage() {
@@ -20,6 +21,7 @@ export default function DashboardPage() {
   const [solicitudes, setSolicitudes] = useState(0)
   const [recursos,   setRecursos]   = useState([])
   const [sugerencias, setSugerencias] = useState(0)
+  const [personasContadores, setPersonasContadores] = useState({ total: 0, desaparecidos: 0, encontrados: 0 })
 
   useEffect(() => {
     const u1 = subscribePuntos(setPuntos, { estadoModeracion: 'aprobado' })
@@ -29,7 +31,8 @@ export default function DashboardPage() {
     const u5 = subscribeSolicitudesPendientes(setSolicitudes)
     const u6 = subscribeRecursos(setRecursos)
     const u7 = subscribeSugerenciasPendientes(setSugerencias)
-    return () => { u1(); u2(); u3(); u4(); u5(); u6(); u7() }
+    const u8 = subscribeContadoresPersonas(setPersonasContadores)
+    return () => { u1(); u2(); u3(); u4(); u5(); u6(); u7(); u8() }
   }, [])
 
   // Totales desde contadores_zona (agregados por Cloud Functions) — precisos
@@ -86,6 +89,39 @@ export default function DashboardPage() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Personas — resumen */}
+      <div>
+        <p className="text-[10px] font-semibold tracking-wide text-slate-600 uppercase mb-2">Personas</p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div onClick={() => navigate('/personas')}
+            className="card p-4 cursor-pointer hover:bg-slate-800/50 transition-colors">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                <Users size={17} className="text-red-400" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 leading-tight">Desaparecidos</p>
+                <p className="text-2xl font-semibold text-slate-100 leading-tight">{personasContadores.desaparecidos}</p>
+                <p className="text-[10px] text-slate-600">de {personasContadores.total} reportes totales</p>
+              </div>
+            </div>
+          </div>
+          <div onClick={() => navigate('/personas')}
+            className="card p-4 cursor-pointer hover:bg-slate-800/50 transition-colors">
+            <div className="flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                <CheckCircle size={17} className="text-emerald-400" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 leading-tight">Localizados</p>
+                <p className="text-2xl font-semibold text-slate-100 leading-tight">{personasContadores.encontrados}</p>
+                <p className="text-[10px] text-slate-600">encontrados / hospital / refugio</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* VenezuelaConecta — resumen */}

@@ -10,6 +10,8 @@ import ReportesPage from '../pages/ReportesPage'
 import AlertasPage from '../pages/AlertasPage'
 import ZonasPage from '../pages/ZonasPage'
 import ContadoresPage from '../pages/ContadoresPage'
+import PersonasPage from '../pages/PersonasPage'
+import MetricasPage from '../pages/MetricasPage'
 import RecursosPage from '../pages/RecursosPage'
 import SugerenciasPage from '../pages/SugerenciasPage'
 
@@ -22,6 +24,8 @@ const PRIVATE_ROUTES = [
   { path: 'alertas',        element: <AlertasPage /> },
   { path: 'zonas',          element: <ZonasPage /> },
   { path: 'contadores',     element: <ContadoresPage /> },
+  { path: 'personas',       element: <PersonasPage /> },
+  { path: 'metricas',       element: <MetricasPage /> },
   { path: 'recursos',       element: <RecursosPage /> },
   { path: 'sugerencias',    element: <SugerenciasPage /> },
 ]

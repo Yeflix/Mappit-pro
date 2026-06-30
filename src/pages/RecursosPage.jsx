@@ -27,7 +27,9 @@ export default function RecursosPage() {
   const [platFil,    setPlatFil]  = useState('')
   const [verifFil,  setVerifFil]  = useState('')
 
-  useEffect(() => subscribeRecursos(setRecursos), [])
+  useEffect(() => subscribeRecursos(setRecursos, {}, (err) => {
+    toast.error('No se pudieron cargar los recursos: ' + err.message)
+  }), [])
 
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }))
 
